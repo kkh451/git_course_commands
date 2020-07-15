@@ -1,0 +1,39 @@
+#========================================================================
+#    EPISODE - WORKING FROM MULTIPLE LOCATIONS WITH A REMOTE REPOSITORY
+#    SECTION - CREATE A NEW REPOSITORY
+#========================================================================
+
+# CREATE A NEW REPOSITORY
+
+# See the course notes to setup a remote repository on GitHub.
+# Once you have set up a remote repository on GitHub,  
+# You’ll get a page with new information about your repository. 
+# We already have our local repository and we will be pushing it to GitHub, 
+# so this is the option we will use:
+
+# You'll need to modify this command with YOUR username 
+#
+# $ git remote add origin https://github.com/<USERNAME>/paper.git 
+#
+# This sets up an alias origin, to correspond to the URL of our new 
+# repository on GitHub.
+
+git remote add origin https://github.com/kkh451/paper.git
+git push -u origin master
+
+
+# PUSH LOCALLY TRACKED FILES TO A REMOTE REPOSITORY
+# Now copy and paste the second line,
+
+git push -u origin master 
+
+# This pushes our master branch to the remote repository, 
+# named via the alias origin and creates a new master branch in the 
+# remote repository.
+
+# Now, on GitHub, we should see our code and if we click the Commits tab we should 
+# see our complete history of commits.
+
+# Our local repository is now available on GitHub. 
+# So, anywhere we can access GitHub, we can access our repository.
+

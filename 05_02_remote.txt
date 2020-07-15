@@ -1,0 +1,46 @@
+#========================================================================
+#    EPISODE - WORKING FROM MULTIPLE LOCATIONS WITH A REMOTE REPOSITORY
+#    SECTION - PUSH OTHER LOCAL BRANCHES TO A REMOTE REPOSITORY
+#            - CLONING A REMOTE REPOSITORY 
+#========================================================================
+
+# PUSH OTHER LOCAL BRANCHES TO A REMOTE REPOSITORY
+
+# Let’s push each of our local branches into our remote repository:
+
+# First, list all branches (local and remote):
+git branch -a
+
+# Now lets push each of them to GitHub
+git push origin simulations
+
+# The branch should now be created in our GitHub repository.
+
+
+# CLONING A REMOTE REPOSITORY
+
+# Now, let’s do something drastic! (but before that step, make sure that 
+# you pushed all your local branches into the remote repository)
+# Let's delete the paper directory.
+
+cd .. 
+rm -rf paper
+
+# Gulp! We’ve just wiped our local repository! But, as we’ve a copy on GitHub 
+# we can just copy, or git clone that,
+git clone https://github.com/kkh451/paper.git 
+
+# Now, if we change into paper we can see that we have our repository,
+cd paper 
+git log
+
+# and we can see our Git configuration files too:
+ls -A
+
+# In order to see the other branches locally, we can check them out as before:
+#  Show remote branches
+git branch -r					
+
+# Check out the simulations branch
+git checkout simulations			
+

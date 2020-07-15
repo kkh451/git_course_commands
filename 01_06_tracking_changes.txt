@@ -1,0 +1,37 @@
+#========================================================================
+#    EPISODE - TRACKING CHANGES WITH A LOCAL REPOSITORY
+#    SECTION - COMMIT CHANGES - 2/3
+#========================================================================
+
+# COMMIT CHANGES 
+# We see changes not staged for commit section and our file is marked 
+# as modified:
+# This means that a file Git knows about has been modified by us but 
+# has not yet been committed. 
+# So we can add it to the staging area and then commit the changes:
+
+git add paper.md 
+git commit # Use commit msg  "Write Introduction"					
+
+# Let's work some more on our article.
+# In our introduction, we should cite a paper describing 
+# the main instrument used.
+
+# ** FILE EDITS ** 
+# Add the following to the introduction section:
+#
+# Particle size was measured using a PCASP (Bloggs et al 2004)
+#
+
+# Let’s also create a file references.txt to hold our references:
+
+nano references.txt
+
+# ** FILE EDITS **
+# Add the following line to references.txt
+# 
+# Bloggs et al 2004, Describe PCASP instrument.
+#
+
+
+

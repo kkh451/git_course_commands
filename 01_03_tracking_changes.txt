@@ -1,0 +1,45 @@
+#========================================================================
+#    EPISODE - TRACKING CHANGES WITH A LOCAL REPOSITORY
+#    SECTION - TRACKING FILES WITH A GIT REPOSITORY
+#	     - ADD FILES TO A GIT REPOSITORY
+#	     - COMMIT CHANGES	
+#========================================================================
+
+# TRACKING FILES WITH A GIT REPOSITORY
+
+# Now, we’ll create a file. 
+# Let’s say we’re going to write a journal paper, so we will start 
+# by adding the author names and a title, then save the file.
+
+nano paper.md
+
+# ** FILE EDITS **
+#
+# Add the following lines of text to file  paper.md
+#
+#  # Title 
+#  Ageing of biomass burning aerosols over West Africa
+#  
+#  # Author 
+#  Kamilla Kopec-Harding
+# 
+
+# git status allows us to find out about the current status of files in 
+# the repository. So we can run,
+
+git status
+
+# Information about what Git knows about the directory is displayed. 
+#
+# The output tells that:
+# - We are on the master branch, which is the default branch in a Git 
+#   respository  (one way to think of branches is like parallel 
+#   versions of the project - more on branches later).
+#
+# - For now, the important bit of information is that our file is 
+#   listed as Untracked which means it is in our working directory 
+#   but Git is not tracking it - that is, any changes made to this 
+#   file will not be recorded by Git.
+#
+# - END -
+

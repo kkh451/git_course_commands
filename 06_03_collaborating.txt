@@ -1,0 +1,40 @@
+#========================================================================
+#    EPISODE - COLLABORATING WITH A REMOTE REPOSITORY
+#    SECTION - PULLING CHANGES FROM A REMOTE REPOSITORY
+#========================================================================
+
+# PULLING CHANGES FROM A REMOTE REPOSITORY
+
+# Switch back to the paper directory
+cd ../paper			
+
+# Get changes from remote repository
+git pull origin master	
+
+# This is the same scenario as before, so we get another fast-forward merge.
+# We can check that we have our changes:
+
+cat paper.md 
+git log
+
+
+# CONFLICTS AND HOW TO RESOLVE THEM
+
+# Let’s continue to pretend that our two local, cloned, repositories are 
+# hosted on two different machines. You should still be in the original 
+# paper folder. Add an affiliation for each author. Then push these 
+# changes to our remote repository:
+
+# Add author affiliations
+
+# ** FILE EDITS ** 
+# 
+# # Author
+# John Smith, University of Elsewhere
+# Kamilla Kopec-Harding, University of Manchester
+# 
+
+git add paper.md 
+git commit -m "Add author affiliations"
+git push origin master
+

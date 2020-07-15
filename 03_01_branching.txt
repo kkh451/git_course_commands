@@ -1,0 +1,39 @@
+#========================================================================
+#    EPISODE - BRANCHING
+#    SECTION - BRANCHING IN PRACTICE
+#========================================================================
+
+# BRANCHING IN PRACTICE
+# 
+# One of our colleagues wants to contribute to the paper but is not quite 
+# sure if it will actually make a publication. 
+#
+# So it will be safer to create a branch and carry on working on this 
+# “experimental” version of the paper in a branch rather than in the 
+#  master.
+
+git checkout -b simulations
+
+# We’re going to change the title of the paper and update the author list 
+# (adding John Smith). 
+# However, before we get started it’s a good practice to check 
+# that we’re working on the right branch using the command `git branch`.
+
+git branch
+
+# The * indicates which branch we’re currently in. 
+# Now let’s make the changes to the paper.
+
+# ** FILE EDITS ** 
+#  
+# CHANGE the title to: 
+# Simulations of biomass burning aerosols over West Africa
+# 
+# ADD the following to the author list:
+# John Smith
+# 
+
+git add paper.md
+git commit -m "Modify title and add John as co-author"
+
+# -END-

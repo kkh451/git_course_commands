@@ -1,0 +1,35 @@
+#========================================================================
+#    EPISODE - WORKING FROM MULTIPLE LOCATIONS WITH A REMOTE REPOSITORY
+#    SECTION - PUSH CHANGES TO A REMOTE REPOSITORY
+#========================================================================
+
+# PUSH CHANGES TO A REMOTE REPOSITORY 
+
+# We can use our cloned repository just as if it was a local repository 
+# so let’s make some changes to our files and commit these.
+
+# We'll continue working on the master branch
+git checkout master				
+
+# Lets add a results section
+#
+# ** File Edits ** 
+#
+# # Results
+# The simulations indicate that coagulation is the dominant growth
+# mechanism for these particles.
+#
+
+# Stage changes
+git add paper.md			
+git commit -m "Discuss results”
+
+# Having done that, how do we send our changes back to the remote repository? 
+# We can do this by pushing our changes,
+git push origin master
+
+# If we now check our GitHub page we should be able to see our new 
+# changes under the Commit tab.
+# To see all remote repositories (we can have multiple!) type:
+
+git remote -v

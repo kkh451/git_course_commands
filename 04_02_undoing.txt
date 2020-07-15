@@ -1,0 +1,68 @@
+#========================================================================
+#    EPISODE - UNDOING CHANGES
+#    SECTION - UNDO CHANGES ASSOCIATED WITH A COMMIT (AMEND)
+#========================================================================
+
+# AMENDING THE MOST RECENT COMMIT
+#
+# If you just made a commit and realised that either you did it a bit too 
+# early or your commit message is not as it is 
+# supposed to be. You can fix that using the command  `git commit --amend`
+# 
+# Let’s try it on our example. 
+# First, let’s modify two files: our paper file and the references file. 
+# We will add a methodology section to the paper where we detail the model 
+# used for the simulations, and add a reference for this to the references file.
+# 
+# Let's add  a methodology section, including a reference to model
+
+
+#  ** FILE EDITS ** 
+# Add the following section to  paper.md
+# 
+# # Methodology 
+#
+# We compared our measurements of particle aging with a model simulation.
+# The model is detailed in Smith et al 2002.
+#
+# ** FILE EDITS **  
+# Add new reference for the model used to references.txt
+#
+# Smith et al 2002, Atmospheric box model
+# 
+
+# Let's  get a status update on file modifications
+git status			
+
+# Let’s then add and commit paper.md but not the references file.
+# First, let's add paper.md to the staging area.
+
+git add paper.md		 
+git commit -m "Describe methodology"
+
+# Let’s have a look at our working directory now:
+git status
+
+# Also, run git log -2 to see what is the latest commit message and ID.
+git log -2
+
+# Now, we want to fix our commit and add the references file.
+# Add reference file
+git add references.txt	
+
+# Next we will amend the most recent commit using
+#
+# $ git commit --amend
+#
+# This will again bring up the editor and we can amend the commit message if required.
+# In this case, we will keep the original commit message, so we will save and close 
+# the text editor when it pops up.
+
+git commit --amend
+
+# Now when we run git status and then git log we can see that our 
+# Working Directory is clean and that both files were added.
+
+git status
+git log -3
+ 

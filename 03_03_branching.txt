@@ -1,0 +1,85 @@
+#========================================================================
+#    EPISODE - BRANCHING
+#    SECTION - MERGING AND RESOLVING CONFLICTS
+#========================================================================
+
+# MERGING AND RESOLVING CONFLICTS
+
+# We are now working on two papers: the main one in our master branch and 
+# the one which may possibly be collaborative work in our “simulations” 
+# branch.Let’s add another section to the paper to write about John’s 
+# simulations.
+
+# First, we need to switch to the simulations branch.
+
+git checkout simulations	
+
+# ** FILE EDITS ** 
+# Add the following section paper.md
+# 
+# # Simulations
+# 
+# We simulate the evolution of particle sizes as they are transported
+# away from the source region.
+#
+
+git add paper.md 
+git commit -m "Add simulations"
+
+# At this point let’s visualise the state of our repo, and we can see the 
+# diverged commit history reflecting the recent work on our two branches:
+
+git log --graph --all --oneline --decorate
+
+# After some discussions with John we decided that we will publish 
+# together, hence it makes sense to now merge all that was authored 
+# together with John in branch “simulations”. 
+# We can do that by merging that branch with the master branch. 
+# Let’s try doing that:
+
+# First, we need to switch to the master branch.
+git checkout master	
+
+# Next, we try to  merge simulations into master
+git merge simulations		
+
+# Git cannot complete the merge because there is a conflict. 
+# If you recall, after creating the new branch, we changed the title of the paper on both branches. 
+# We have to resolve the conflict and then complete the merge. We can get some more detail
+
+git status
+
+# Let’s look inside paper.md:
+
+cat paper.md
+
+# The mark-up shows us the parts of the file causing the conflict and the versions they come from. 
+# We now need to manually edit the file to resolve the conflict. This means:
+#
+#  - removing the mark-up and doing one of:
+# 
+#  - keep the current version, which is the one marked-up by HEAD i.e. 
+#   “Aircraft measurements of biomass burning aerosols over West Africa”   OR
+# 
+#  - keep the version from the other branch, which is the one marked-up by simulations i.e. 
+#   “Simulations of biomass burning aerosols over West Africa”		   OR 				
+# 
+#  - manually edit the line to something new which might combine some elements of the two e.g. 
+#   “Aircraft measurements and simulations of biomass burning aerosols over West Africa”
+
+# We edit the file. Then commit our changes:
+
+echo "/START-N009"
+echo "# Title\nAircraft measurements and simulation of burning biomass aerosols over West Africa.\n\nSimulations of burning biomass aerosols over West Africa.\n\n# Author\n\nKamilla Kopec-Harding\nJohn Smith\n\n# Introduction\nWe present aircraft measurements of BBOA over West Africa.\n\nParticle size was measured using a PCASP, (Bloggs et al 2004)\n\nJones (1998) conducted several studies in the region, but continental scale\nmeasurements have not been made.\n\nA large uncertainty in BBOA modelling is the extent to which values in the\nliterature can be applied at a local scale.\n\nWe simulate the evolution of particle sizes as they are carried away from the source region." >> paper.md
+echo "/END"
+
+# Let Git know we have resolved the conflict
+git add paper.md		
+git commit
+
+# This is where version control proves itself better than DropBox or GoogleDrive, this ability to merge 
+# text files line-by-line and highlight the conflicts between them, so no work is ever lost.
+
+# We can see the two branches merged if we take another look at the log graph:
+
+git log --graph --decorate --all --oneline

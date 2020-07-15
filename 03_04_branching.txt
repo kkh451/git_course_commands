@@ -1,0 +1,44 @@
+#========================================================================
+#    EPISODE - BRANCHING
+#    SECTION - MERGING AND RESOLVING CONFLICTS
+#========================================================================
+
+# MERGING AND RESOLVING CONFLICTS
+
+# Git cannot complete the merge because there is a conflict. 
+# If you recall, after creating the new branch, 
+# we changed the title of the paper on both branches. 
+# We have to resolve the conflict and then complete the merge. 
+# We can get some more detail
+
+git status
+
+# Let’s look inside paper.md:
+
+cat paper.md
+
+# The mark-up shows us the parts of the file causing the conflict and 
+# the versions they come from. 
+# We now need to manually edit the file to resolve the conflict. 
+
+# ** FILE EDITS **
+# We edit the file. Then commit our changes:
+#
+# CHANGE the title to:
+# Aircraft measurements and simulation of burning biomass aerosols over 
+# West Africa.
+#
+# REMOVE any markup added by git
+#
+#
+
+# Let Git know we have resolved the conflict
+git add paper.md		
+git commit
+
+# We can see the two branches merged if we take another look at the log 
+# graph:
+
+git log --graph --decorate --all --oneline
+
+# - END - 

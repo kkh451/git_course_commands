@@ -1,0 +1,27 @@
+#========================================================================
+#    EPISODE - TRACKING CHANGES WITH A LOCAL REPOSITORY
+#    SECTION - COMMIT CHANGES - 3/3
+#========================================================================
+
+# COMMIT CHANGES 
+
+# Now we need to record our work in the repository so we need to 
+# make a commit. 
+# First we tell Git to track the references.txt file
+
+git add references.txt					
+
+# Verify that references.txt is now tracked
+git status
+
+# The file references.txt is now tracked. 
+# We also have to add paper.md to the staging area. 
+# But there is a shortcut. 
+# We can use commit -a. 
+# This option means “commit all files that are tracked and 
+# that have been modified”.
+
+git commit -am "Reference J Bloggs and add references file" 	
+
+
+

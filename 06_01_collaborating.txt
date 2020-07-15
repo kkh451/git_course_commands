@@ -1,0 +1,44 @@
+#========================================================================
+#    EPISODE - COLLABORATING WITH A REMOTE REPOSITORY
+#    SECTION - PULLING CHANGES FROM A REMOTE REPOSITORY
+#========================================================================
+
+# PULLING CHANGES FROM A REMOTE REPOSITORY
+
+# Now when we have a remote repository, we can share it and collaborate 
+# with others (and we can also work from multiple locations: for example 
+# from a laptop and a desktop in the lab). 
+# 
+# But how do we get the latest changes? 
+# Git allows us to get the latest changes 
+# down from a repository.
+
+# We’ll first do a “dry run” of pulling changes from a remote repository 
+# and then we’ll work in pairs for some real-life practice.
+
+# First, let us leave our current local repository,
+cd ..  
+ls
+
+# And let us clone our repository again, but this time specify the 
+# local directory name,
+
+git clone https://github.com/kkh451/paper.git laptop_paper 
+ls
+
+# Let’s pretend these clones are on two separate machines! 
+# So let’s go into one of our clones, add a figures section, 
+# commit the file and push these changes to GitHub:
+
+# Switch to the 'paper' directory
+cd paper 
+
+# ** FILE EDITS ** 
+# Add figures section to paper.md
+#
+# # Figures
+# Figures go in their own section in a draft paper.
+# 
+git add paper.md 
+git commit -m "Add figures"
+git push

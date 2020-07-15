@@ -1,0 +1,24 @@
+#========================================================================
+#    EPISODE - BRANCHING
+#    SECTION - BRANCHING IN PRACTICE
+#========================================================================
+
+# BRANCHING IN PRACTICE
+
+# If we now want to work in our master branch. 
+# We can switch back by using:
+git checkout master 
+
+# Having written some of the paper, we have thought of a better title 
+# for the master version of the paper.
+# Let's rewrite the title:
+
+# ** FILE EDITS ** 
+# 
+# CHANGE the title to:
+# Aircraft measurements of biomass burning aerosols over West Africa
+#
+git add paper.md
+git commit -m  "Include aircraft in title"
+
+# - END - 

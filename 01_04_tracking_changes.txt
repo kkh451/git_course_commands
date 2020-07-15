@@ -1,0 +1,24 @@
+#========================================================================
+#    EPISODE - TRACKING CHANGES WITH A LOCAL REPOSITORY
+#    SECTION - ADD FILES TO A GIT REPOSITORY
+#========================================================================
+
+# ADD FILES TO A GIT REPOSITORY 
+
+# To tell Git about the file, we will use the git add command:
+
+git add paper.md 
+git status 
+
+# Now our file is listed underneath where it says Changes to be 
+# committed.
+#
+# git add is used for two purposes:
+# - to tell Git that a given file should be tracked. 
+# - Secondly, to put the file into the Git staging area which is 
+#   also known as the index or the cache.
+#
+# - END -
+
+
+

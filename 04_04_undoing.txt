@@ -1,0 +1,45 @@
+#========================================================================
+#    EPISODE - UNDOING CHANGES
+#    SECTION - UNDO CHANGES ASSOCIATED WITH A COMMIT (REVERT)
+#========================================================================
+
+# UNDO CHANGES ASSOCIATED WITH A COMMIT (revert)
+
+# git revert removes the changes applied in a specified commit. 
+# However, rather than deleting the commit from history, git works out 
+# how to undo those changes introduced by the commit, and 
+# appends a new commit with the resulting content.
+
+# Let’s try it on our example. 
+# Modify the paper, describing the SMPS which is another instrument used 
+# to measure particle sizes, and then make a commit.
+
+# ** FILE EDITS **
+#
+# Modify introduction in paper.md:
+#
+# # Introduction
+# We present aircraft measurements of BBOA over West Africa.Particle size was 
+# measured using a PCASP, (Bloggs et al 2004) and SMPS instrument
+# Jones (1998) conducted several studies in the region, but continental scale
+# measurements have not been made.
+# 
+# A large uncertainty in BBOA modelling is the extent to which values in the
+# literature can be applied at a local scale.
+# 
+
+git add paper.md
+git commit -m "Describe SMPS"
+
+# We now realise that what we’ve just done in our journal article is incorrect 
+# because we are not using the data from that instrument. 
+# Some of the data got corrupted, and due to problems with the logging computer 
+# we are not going to use that data. So it makes sense to abandon the commit completely.
+
+# Let's undo changes introduced by most recent commit
+
+git revert HEAD		
+
+# When we revert, a new commit is created.
+# - END - 
+

@@ -1,0 +1,29 @@
+#========================================================================
+#    EPISODE - TRACKING CHANGES WITH A LOCAL REPOSITORY
+#    SECTION - SETTING UP GIT
+#========================================================================
+
+# To get started, we need to configure git 
+# First, we need to tell git who we are 
+# This ensures that any contributon we make are correctly attributed 
+# to us 
+
+git config --global user.name "Your Name" 
+git config --global user.email your.name@manchester.ac.uk
+
+# Next, we need to set a default text editor that we will use when 
+# working with git We will use nano 
+
+git config --global core.editor nano
+
+# Next we will turn on color coding of git output 
+# This will make it more readable for us 
+
+git config --global --add color.ui true
+
+# Finally, let's check that our choices have been captured in 
+# git's global config file in our home directory 
+
+cat ~/.gitconfig  
+
+# - END -

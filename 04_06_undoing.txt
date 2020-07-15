@@ -1,0 +1,40 @@
+#========================================================================
+#    EPISODE - UNDOING CHANGES
+#    SECTION - UNDO CHANGES ASSOCIATED WITH A COMMIT (RESET)
+#========================================================================
+
+# RESTORE A PREVIOUS STATE BY DELETING HISTORY (`git reset --hard`)
+ 
+# git reset has several uses, and is most often used to unstage files 
+# from the staging area i.e. git reset or git reset <file>.
+# We are going to use a variant git reset --hard <commit> to reset things 
+# to how they were at <commit>. 
+# 
+# This is a permanent undo which deletes all changes more recent than 
+# <commit> from your history. 
+#
+# There is clearly potential here to lose work, so use this command with 
+# care.Let’s try that on our paper, using the same example as before. 
+#
+# Now we have two commits which we want to abandon: 
+# - the commit outlining the unreliable instrumentation
+# - the subsequent revert commit
+#
+# We can achieve this by resetting to the last commit we want to keep.
+# We can do that by running:
+# 
+
+git reset --hard HEAD~2	
+
+# This moves tip of branch to two commits before HEAD
+# HEAD is now at the commit 
+# "Add methodology section and update references file"
+
+# This moves the tip of the branch back to the specified commit. 
+# If we look in-depth, this command moves back two pointers: 
+# HEAD and the pointer to the tip of the branch we currently are working 
+# on (master). 
+# (HEAD~ = the commit right before HEAD; HEAD~2 = two commits before HEAD)
+# The final effect is what we need: we abandoned the commits and we are now 
+# back to where we were before making the commit about the data we are not using.
+

@@ -1,0 +1,40 @@
+#========================================================================
+#    EPISODE - TRACKING CHANGES WITH A LOCAL REPOSITORY
+#    SECTION - CREATE A NEW REPOSITORY WITH GIT
+#========================================================================
+
+# CREATE A NEW REPOSITORY WITH GIT
+
+# In this tutorial, we will use the example of writing and tracking
+# changes to an academic paper to learn about version control with git.
+# - First, we will work on our paper as a single author.
+# - Later we will collaborate with our colleague John Smith
+#   at the University of Elsewhere  
+
+# First let's create a directory within your home directory 
+
+cd ~
+
+# Let's check that we are in our home directory as planned
+# (output should be /home/username)
+
+pwd
+
+# Let's create a folder to hold our project files
+# and then navigate into it
+
+mkdir paper
+cd paper
+
+# Now we need to set up this directory to be a git repository
+# or "initiate the repository". 
+
+git init
+
+# The directory paper is now our working directory. 
+# If we look in this directory, we'll find a .git directory. 
+
+ls .git 
+
+# We have now set up our first git repository
+# - END - 

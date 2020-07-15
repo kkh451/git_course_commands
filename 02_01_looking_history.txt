@@ -1,0 +1,38 @@
+#========================================================================
+#    EPISODE - LOOKING AT HISTORY AND DIFFERENCES
+#    SECTION - LOOKING AT DIFFERENCES
+#========================================================================
+
+# LOOKING AT DIFFERENCES
+
+# We should reference some previous work in the introduction section. 
+# We will make the required changes, save both files but will not commit 
+# the changes straight away. 
+
+# First we will cite previous studies in the introduction
+#
+# ** FILE EDITS ** 
+# 
+# Add the following lines to the introduction in paper.md
+#
+# Jones et al (1998) conducted several studies in this region, 
+# but continental-scale measurements have not previously been made
+#
+# Then add the reference to references.txt
+#
+# ** FILE EDITS ** 
+#
+# Add the following lines to references.txt
+#  
+# Jones et al 1998, Previous studies
+# 
+
+# We can review the changes that we made using the `git diff` commnd:
+
+git diff 		
+
+# Now let's commit the change we made by adding the second reference:
+
+git add paper.md references.txt 
+git commit -m "Cite previous work in introduction"
+

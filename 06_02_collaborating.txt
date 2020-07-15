@@ -1,0 +1,55 @@
+#========================================================================
+#    EPISODE - COLLABORATING WITH A REMOTE REPOSITORY
+#    SECTION - PULLING CHANGES FROM A REMOTE REPOSITORY
+#========================================================================
+
+# Now let’s change directory to our other repository and fetch the commits 
+# from our remote repository,
+
+# Switch to the other directory
+cd ../laptop_paper		
+git fetch
+
+# We can visualise the remote branches in the same way as we did for local 
+# branches, so let’s draw a network graph before going any further:
+git log --graph --all --decorate --oneline
+
+# As expected, we see that the origin/master branch is ahead of our local 
+# master branch by one commit — note that the history hasn’t diverged, 
+# rather our local branch is missing the most recent commit on origin/master.
+
+# We can now see what the differences are by doing,
+git diff origin/master
+
+# which compares our master branch with the origin/master branch which is 
+# the name of the master branch in origin which is the alias for our cloned 
+# repository, the one on GitHub.
+
+# We can then merge these changes into our current repository, but given 
+# the history hasn’t diverged, we don’t get a merge commit — instead we get 
+# a fast-forward merge.
+git merge origin/master
+
+# If we look at the network graph again, all that has changed is that master 
+# now points to the same commit as origin/master.
+git log --graph --all --decorate --oneline -4
+
+# We can inspect the file to confirm that we have our changes.
+cat paper.md 
+
+# As a short-hand, we can do a git pull which does a git fetch then a git 
+# merge. Next we will update our repo using pull, but this time starting 
+# in the laptop_paper folder (you should already be in the laptop_paper folder). 
+# Let’s write the conclusions:
+
+# ** FILE EDITS ** 
+# Add the following section to paper.md
+#  
+# # Conclusions
+# We have made fantastic insight into the BBOA aging process.
+# Nonetheless, questions remain unanswered, so we should get some more funding.
+#
+
+git add paper.md 
+git commit -m "Write Conclusions" 
+git push origin master

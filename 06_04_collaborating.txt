@@ -1,0 +1,49 @@
+#======================================================================================
+#    EPISODE - COLLABORATING WITH A REMOTE REPOSITORY
+#    SECTION - CONFLICTS AND HOW TO RESOLVE THEM 
+#======================================================================================
+
+# Our push fails, as we’ve not yet pulled down our changes from our 
+# remote repository.Before pushing we should always pull, so let’s do that…
+#
+git pull origin master
+git status
+
+#
+# We can see that our file is listed as Unmerged. 
+# If we look at paper.md, we see something like:
+tail -n 10  paper.md 
+
+# The mark-up shows us the parts of the file causing the conflict and the versions
+# they come from. 
+#
+# We edit the file. Then commit our changes.
+#
+
+# ** File Edits **
+# Change authorship section to:
+# 
+# Author
+# John Smith, University of Elsewhere
+# Kamilla Kopec-Harding, University of Manchester
+#
+
+git add paper.md		# Stage the file
+git commit # Commit to mark the conflict as resolved
+
+# Now, if we push, all goes well.
+#
+git push origin master
+
+#
+# If we now go to GitHub and click on the “INSIGHTS:NETWORK” tab we can see 
+# where our repository diverged and came together again.
+#
+# We’ll finish by pulling these changes into the other copy of the repo (desktop, paper), so 
+# both copies are up to date:
+#
+cd ../paper			# Switch to 'paper' directory
+git pull origin master	# Merge remote branch into local
+
+# Success!
+# - End -    

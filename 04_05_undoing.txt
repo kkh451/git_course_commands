@@ -1,0 +1,196 @@
+
+
+
+  
+#doitlive shell: /bin/bash
+#doitlive prompt: default
+#doitlive speed: 1
+#doitlive env: DOCS_URL=https://doitlive.readthedocs.io
+#doitlive commentecho: true
+
+#========================================================================
+# SCREENCAST - VERSION CONTROL WITH GIT 004
+#    EPISODE - UNDOING CHANGES
+#    SECTION - DISCARDING LOCAL CHANGES
+#            - UNDO CHANGES ASSOCIATED WITH A COMMIT (REVERT)
+#========================================================================
+
+# DISCARDING LOCAL CHANGES
+# There are a number of things which we can amend and change after they 
+# have been commited in Git.
+
+# Maybe we made our change just to see how something looks, or to quickly 
+# try something out. But we may be unhappy with our changes. 
+#
+# If we haven’t yet done a git add we can just throw the changes away 
+# and return our file to the most recent version we committed to the 
+# repository by using:
+#
+#  $ git cheeckout paper.md
+#
+# Let's make a small edit to the paper.md file e.g. some Acknowledgements
+# 
+
+echo "# Acknowledgements" >> paper.md
+tail -n10 paper.md
+
+# Discard edits we just made
+git checkout paper.md	
+
+# And we can see that our file has reverted to being the most up-to-date 
+# one in the repository:
+# First, let's check the status of our repostory: 
+
+git status			
+
+# We see that we have a clean working directory
+
+# Then let's  inspect file to verify changes have been discarded
+tail -n10 paper.md
+ 
+# AMENDING THE MOST RECENT COMMIT
+# If you just made a commit and realised that either you did it a bit 
+# too early and the files are not yet ready to be commited. Or, which 
+# is not as uncommon as you think, your commit message is not as it is 
+# supposed to be. You can fix that using the command 
+#
+# $ git commit --amend
+# 
+# This opens up the default editor for Git which includes the previous 
+# commit message - you can edit it and close the editor. 
+#
+# This will simply fix the commit message.
+# But what if we forgot to include some files in the commit?
+# 
+# Let’s try it on our example. 
+# First, let’s modify two files: our paper file and the references file. 
+# We will add a methodology section to the paper where we detail the model 
+# used for the simulations, and add a reference for this to the references file.
+# 
+# Let's add  a methodology section, including a reference to model
+
+echo "/START-N010"
+echo "# Methodology\nWe compared our measurements of particle aging with a model simulation.\nThe model is detailed in Smith et al 2002.\n" >> paper.md
+echo "/END"
+
+# Add new reference for the model used
+
+echo "/START-R003"
+echo "Smith et al 2002, Atmospheric box model" >> references.txt
+echo "/END"
+
+# Let's  get a status update on file modifications
+git status			
+
+# Let’s then add and commit paper.md but not the references file.
+# First, let's add paper.md to the staging area.
+
+git add paper.md		 
+git commit -m "Describe methodology"
+
+# Let’s have a look at our working directory now:
+
+git status
+
+# Also, run git log -2 to see what is the latest commit message and ID.
+git log -2
+
+# Now, we want to fix our commit and add the references file.
+# Add reference file
+git add references.txt	
+
+# Next we will amend the most recent commit using
+#
+# $ git commit --amend
+#
+# This will again bring up the editor and we can amend the commit message if required.
+# In this case, we will keep the original commit message, so we will save and close 
+# the text editor when it pops up.
+
+git commit --amend
+
+# Now when we run git status and then git log we can see that our 
+# Working Directory is clean and that both files were added.
+
+git status
+git log -3
+ 
+# UNDO CHANGES ASSOCIATED WITH A COMMIT (revert)
+
+# git revert removes the changes applied in a specified commit. 
+# However, rather than deleting the commit from history, git works out 
+# how to undo those changes introduced by the commit, and 
+# appends a new commit with the resulting content.
+
+# Let’s try it on our example. 
+# Modify the paper, describing the SMPS which is another instrument used 
+# to measure particle sizes, and then make a commit.
+
+# Describe other instrument
+echo "/START-N011"
+echo "# Title\nAircraft measurements and simulation of burning biomass aerosols over West Africa.\nSimulations of burning biomass aerosols over West Africa.\n\n# Author\nKamilla Kopec-Harding\nJohn Smith\n\n# Introduction\n\nWe present aircraft measurements of BBOA over West Africa.\n\nParticle size was measured using a PCASP, (Bloggs et al 2004) and SMPS instrument\n\nJones (1998) conducted several studies in the region, but continental scale\nmeasurements have not been made.\n\nA large uncertainty in BBOA modelling is the extent to which values in the\nliterature can be applied at a local scale.\n\n# Simulations\nWe simulate the evolution of particle sizes as they are carried away from the source region.\n\n# Methodology\nWe compared our measurements of particle aging with a model simulation.\nThe model is detailed in Smith et al 2002." >> paper.md
+echo "/END"
+
+git add paper.md
+git commit -m "Describe SMPS"
+
+# We now realise that what we’ve just done in our journal article is incorrect 
+# because we are not using the data from that instrument. 
+# Some of the data got corrupted, and due to problems with the logging computer 
+# we are not going to use that data. So it makes sense to abandon the commit completely.
+
+# Let's undo changes introduced by most recent commit
+
+git revert HEAD		
+
+# When we revert, a new commit is created. 
+# The HEAD pointer and the branch pointer are in fact moved forward rather than backwards.
+# We can revert any previous commit. That is, we can “abandon” any of the previous changes. 
+# However, depending on the changes we made, we may bump into a conflict (which we will cover in more detail further on).
+#
+# !!! TODO EDIT FOR CLARITY  KKH
+#  error: could not revert 848361e... Describe SMPS
+hint: after resolving the conflicts, mark the corrected paths
+hint: with 'git add <paths>' or 'git rm <paths>'
+hint: and commit the result with 'git commit'
+
+# Behind the scenes Git gets confused trying to merge the commit HEAD is pointing to with 
+# the past commit we’re reverting.
+#
+# So we have seen that git revert is a non-destructive way to undo a commit. 
+
+# What if we don’t want to keep a record of undoing commits? 
+# That would give a neater history. 
+# git reset can also be used to undo commits, but it does so by deleting history.
+
+# RESTORE A PREVIOUs STATE BY DELETING HISTORY (`git reset --hard`)
+ 
+# git reset has several uses, and is most often used to unstage files from the 
+# staging area i.e. git reset or git reset <file>.
+# We are going to use a variant git reset --hard <commit> to reset things to how 
+# they were at <commit>. 
+# This is a permanent undo which deletes all changes more recent than <commit> 
+# from your history. 
+#
+# There is clearly potential here to lose work, so use this command with care.
+# Let’s try that on our paper, using the same example as before. 
+#
+# Now we have two commits which we want to abandon: 
+# - the commit outlining the unreliable instrumentation
+# - the subsequent revert commit
+#
+# We can achieve this by resetting to the last commit we want to keep.
+# We can do that by running:
+
+git reset --hard HEAD~2	
+
+# This moves tip of branch to two commits before HEAD
+# HEAD is now at the commit "Add methodology section and update references file"
+
+# This moves the tip of the branch back to the specified commit. 
+# If we look in-depth, this command moves back two pointers: 
+# HEAD and the pointer to the tip of the branch we currently are working on (master). 
+# (HEAD~ = the commit right before HEAD; HEAD~2 = two commits before HEAD)
+# The final effect is what we need: we abandoned the commits and we are now back 
+# to where we were before making the commit about the data we are not using.
+

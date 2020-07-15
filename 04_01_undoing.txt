@@ -1,0 +1,43 @@
+#========================================================================
+#    EPISODE - UNDOING CHANGES
+#    SECTION - DISCARDING LOCAL CHANGES
+#            - UNDO CHANGES ASSOCIATED WITH A COMMIT (REVERT)
+#========================================================================
+
+# DISCARDING LOCAL CHANGES
+#
+# There are a number of things which we can amend and change after they 
+# have been commited in Git.
+
+# Maybe we made our change just to see how something looks, or to quickly 
+# try something out. But we may be unhappy with our changes. 
+#
+# If we haven’t yet done a git add we can just throw the changes away 
+# and return our file to the most recent version we committed to the 
+# repository by using: git cheeckout paper.md
+#
+# Let's make a small edit to the paper.md file e.g. some Acknowledgements
+# 
+
+# ** FILE EDITS ** 
+# 
+# Add the following lines to paper.md
+# 
+# # Acknowledgements" 
+#
+
+# Discard edits we just made
+git checkout paper.md	
+
+# And we can see that our file has reverted to being the most up-to-date 
+# one in the repository:
+# First, let's check the status of our repostory: 
+
+git status			
+
+# We see that we have a clean working directory
+
+# Then let's  inspect file to verify changes have been discarded
+tail -n10 paper.md
+ 
+# - END - 
